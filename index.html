@@ -1,0 +1,1548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Medicare Coach — Market Research</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+  /* === TOKEN LAYER === */
+  :root {
+    --bg:          #F4F7FC;
+    --surface:     #FFFFFF;
+    --surface-alt: #EBF7FF;
+    --navy:        #24408E;
+    --navy-deep:   #1A2F66;
+    --teal:        #00A896;
+    --red:         #C41520;
+    --amber:       #D97706;
+    --text:        #1A2030;
+    --muted:       #4E5A72;
+    --border:      #D4DCF0;
+    --badge-t1-bg: #EBF7FF;
+    --badge-t1-fg: #24408E;
+    --badge-t2-bg: #FFF3E0;
+    --badge-t2-fg: #A04000;
+    --badge-t3-bg: #F3F0FF;
+    --badge-t3-fg: #5B21B6;
+    --tag-bg:      #E8F5E9;
+    --tag-fg:      #1B5E20;
+    --flag-bg:     #FFF0F0;
+    --flag-fg:     #C41520;
+    --insight-bg:  #EBF7FF;
+    --insight-border: #24408E;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:          #0E1B38;
+      --surface:     #162040;
+      --surface-alt: #1B2A54;
+      --navy:        #7CA1E8;
+      --navy-deep:   #A8C0F0;
+      --teal:        #2DD4BF;
+      --red:         #F87171;
+      --amber:       #FBBF24;
+      --text:        #E8EEFF;
+      --muted:       #8A9EC0;
+      --border:      #243260;
+      --badge-t1-bg: #1B2A54;
+      --badge-t1-fg: #7CA1E8;
+      --badge-t2-bg: #2A1F0E;
+      --badge-t2-fg: #FBBF24;
+      --badge-t3-bg: #1F1B35;
+      --badge-t3-fg: #A78BFA;
+      --tag-bg:      #0D2818;
+      --tag-fg:      #6EE7B7;
+      --flag-bg:     #2A0E0E;
+      --flag-fg:     #F87171;
+      --insight-bg:  #1B2A54;
+      --insight-border: #7CA1E8;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg:          #0E1B38;
+    --surface:     #162040;
+    --surface-alt: #1B2A54;
+    --navy:        #7CA1E8;
+    --navy-deep:   #A8C0F0;
+    --teal:        #2DD4BF;
+    --red:         #F87171;
+    --amber:       #FBBF24;
+    --text:        #E8EEFF;
+    --muted:       #8A9EC0;
+    --border:      #243260;
+    --badge-t1-bg: #1B2A54;
+    --badge-t1-fg: #7CA1E8;
+    --badge-t2-bg: #2A1F0E;
+    --badge-t2-fg: #FBBF24;
+    --badge-t3-bg: #1F1B35;
+    --badge-t3-fg: #A78BFA;
+    --tag-bg:      #0D2818;
+    --tag-fg:      #6EE7B7;
+    --flag-bg:     #2A0E0E;
+    --flag-fg:     #F87171;
+    --insight-bg:  #1B2A54;
+    --insight-border: #7CA1E8;
+  }
+
+  /* === RESET === */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* === LAYOUT === */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* === HEADER === */
+  .report-header {
+    border-bottom: 3px solid var(--navy);
+    padding: 48px 0 32px;
+    margin-bottom: 48px;
+  }
+  .report-eyebrow {
+    font-family: 'Cabin', 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+  .report-title {
+    font-family: 'Cabin', 'Helvetica Neue', sans-serif;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--navy);
+    text-wrap: balance;
+    margin-bottom: 12px;
+  }
+  .report-subtitle {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 620px;
+  }
+  .report-meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .report-meta-item {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  .report-meta-item strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* === SECTION === */
+  .section {
+    margin-bottom: 60px;
+  }
+  .section-label {
+    font-family: 'Cabin', 'Helvetica Neue', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-family: 'Cabin', 'Helvetica Neue', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.25;
+    text-wrap: balance;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* === INSIGHT BOX === */
+  .insight {
+    background: var(--insight-bg);
+    border-left: 4px solid var(--insight-border);
+    padding: 16px 20px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 24px;
+  }
+  .insight-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 4px;
+    font-family: 'Cabin', sans-serif;
+  }
+  .insight p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+  }
+
+  /* === FLAG BOX === */
+  .flag {
+    background: var(--flag-bg);
+    border-left: 4px solid var(--red);
+    padding: 14px 18px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 16px;
+  }
+  .flag-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 4px;
+    font-family: 'Cabin', sans-serif;
+  }
+  .flag p {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.55;
+  }
+
+  /* === COMPETITOR CARD === */
+  .competitor-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .competitor-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+  }
+  .competitor-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .competitor-name {
+    font-family: 'Cabin', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .competitor-type {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .tier-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .tier-1 { background: var(--badge-t1-bg); color: var(--badge-t1-fg); }
+  .tier-2 { background: var(--badge-t2-bg); color: var(--badge-t2-fg); }
+  .tier-3 { background: var(--badge-t3-bg); color: var(--badge-t3-fg); }
+
+  .competitor-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
+    font-size: 13.5px;
+  }
+  @media (max-width: 600px) {
+    .competitor-body { grid-template-columns: 1fr; }
+  }
+  .competitor-field-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2px;
+    font-family: 'Cabin', sans-serif;
+  }
+  .competitor-field-value {
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-fg);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin: 2px 2px 2px 0;
+  }
+  .alert-tag {
+    display: inline-block;
+    background: var(--flag-bg);
+    color: var(--red);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin: 2px 2px 2px 0;
+  }
+
+  /* === PATTERNS TABLE === */
+  .patterns-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .pattern-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 20px;
+    align-start: start;
+  }
+  @media (max-width: 640px) {
+    .pattern-card { grid-template-columns: 1fr; }
+  }
+  .pattern-name {
+    font-family: 'Cabin', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .pattern-desc {
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .pattern-example {
+    background: var(--surface-alt);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.55;
+    border-left: 2px solid var(--border);
+  }
+  .pattern-example em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .pattern-who {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--teal);
+    font-family: 'Cabin', sans-serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  /* === CREATIVE RECOMMENDATIONS === */
+  .rec-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .rec-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .rec-header {
+    background: var(--navy);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .rec-num {
+    font-family: 'Cabin', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    min-width: 24px;
+  }
+  .rec-title {
+    font-family: 'Cabin', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    flex: 1;
+  }
+  .priority-chip {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+  .p-high { background: var(--red); color: #fff; }
+  .p-med  { background: var(--amber); color: #1A2030; }
+  .p-test { background: #4CAF50; color: #fff; }
+
+  .rec-body {
+    padding: 18px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 24px;
+    font-size: 13.5px;
+  }
+  @media (max-width: 600px) {
+    .rec-body { grid-template-columns: 1fr; }
+  }
+  .rec-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .rec-field-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-family: 'Cabin', sans-serif;
+  }
+  .rec-field-value {
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .hook-text {
+    font-family: 'Cabin', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.45;
+    padding: 10px 14px;
+    background: var(--surface-alt);
+    border-radius: 5px;
+    border-left: 3px solid var(--teal);
+  }
+  .rec-full-width {
+    grid-column: 1 / -1;
+  }
+
+  /* === GAPS TABLE === */
+  .gap-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    overflow-x: auto;
+  }
+  .gap-table-wrap {
+    overflow-x: auto;
+  }
+  .gap-table th {
+    background: var(--navy);
+    color: #fff;
+    font-family: 'Cabin', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .gap-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .gap-table tr:nth-child(even) td {
+    background: var(--surface-alt);
+  }
+  .gap-table tr:last-child td {
+    border-bottom: none;
+  }
+  .check { color: var(--teal); font-weight: 700; }
+  .cross { color: var(--red); font-weight: 700; }
+
+  /* === SUMMARY STATS === */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  @media (max-width: 640px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Cabin', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.3;
+  }
+
+  /* === DIVIDER === */
+  hr.section-hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* === MISC === */
+  p { margin-bottom: 12px; }
+  p:last-child { margin-bottom: 0; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 6px; font-size: 14px; line-height: 1.6; }
+  strong { font-weight: 600; color: var(--text); }
+
+  /* Focus states */
+  a:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="report-header">
+    <div class="report-eyebrow">Competitive Intelligence — The Medicare Coach</div>
+    <h1 class="report-title">Medicare Workshop Market Research</h1>
+    <p class="report-subtitle">Competitor landscape, creative patterns currently working on Meta, and specific creative recommendations for Emily's next batch.</p>
+    <div class="report-meta">
+      <span class="report-meta-item"><strong>Date:</strong> August 26, 2026</span>
+      <span class="report-meta-item"><strong>Source:</strong> Meta Ad Library (live), brand files, independent web research</span>
+      <span class="report-meta-item"><strong>Focus:</strong> Free workshop / webinar funnel competitors</span>
+    </div>
+  </header>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Direct competitors profiled</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">10</div>
+      <div class="stat-label">Creative patterns cataloged</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">15</div>
+      <div class="stat-label">Creative recommendations</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Angles Emily owns outright</div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: COMPETITOR LANDSCAPE -->
+  <section class="section">
+    <div class="section-label">Section 01</div>
+    <h2 class="section-title">Competitor Landscape</h2>
+
+    <div class="insight">
+      <div class="insight-label">Key Finding</div>
+      <p>The workshop/webinar funnel format is no longer a differentiator — at least 5 advertisers are running the same "free online Medicare workshop" model on Meta right now. The differentiation has to live in <strong>who Emily is</strong>, <strong>the independence story</strong>, and <strong>specific rules no one else names</strong>. And: since January 2025, Meta's Special Ads Category killed age-bracket and lookalike targeting for all Medicare advertisers. Everyone is now running broad. <strong>Creative copy naming a specific life situation now does the demographic qualification work.</strong> Hook specificity is a media strategy, not just a copywriting preference.</p>
+    </div>
+
+    <p style="font-size:13px; color:var(--muted); margin-bottom:20px;">Direct model competitors — advertisers running the same free workshop / education funnel Emily does.</p>
+
+    <div class="competitor-grid">
+
+      <div class="competitor-card">
+        <div class="competitor-card-header">
+          <div>
+            <div class="competitor-name">MedicareSchool.com (Marvin Musick)</div>
+            <div class="competitor-type">Free online Medicare Essentials Workshop · medicareschool.com</div>
+          </div>
+          <span class="tier-badge tier-1">Tier 1 — Closest Rival</span>
+        </div>
+        <div class="competitor-body">
+          <div>
+            <div class="competitor-field-label">Meta Activity</div>
+            <div class="competitor-field-value">15+ active ads. Running since June 22, 2026. Multiple video creative (1:30–2:06). Heavy volume.</div>
+          </div>
+          <div>
+            <div class="competitor-field-label">Core Hook Angles</div>
+            <div class="competitor-field-value">
+              <span class="tag">"Two Medicare paths"</span>
+              <span class="tag">"Learn before you enroll"</span>
+              <span class="tag">"Nobody told you"</span>
+              <span class="tag">$200K hospital bill shock</span>
+            </div>
+          </div>
+          <div>
+            <div class="competitor-field-label">Positioning</div>
+            <div class="competitor-field-value">Education-first, no direct commission claim. Marvin Musick is the named expert. "Thousands of 5-star reviews," "A+ BBB," "150,000 helped." Runs retargeting "book a call" ads to non-converters.</div>
+          </div>
+          <div>
+            <div class="competitor-field-label">Threat Level</div>
+            <div class="competitor-field-value"><span class="alert-tag">HIGH — identical funnel model, heavy spend, appears before Emily on keyword searches</span></div>
+          </div>
+          <div style="grid-column:1/-1;">
+            <div class="competitor-field-label">How Emily Beats Them</div>
+            <div class="competitor-field-value">One structural fact they cannot repeat: Marvin Musick's operation still routes to plan sales, so "education-first" is the front of a commissioned funnel. Emily takes no carrier money and sells no plans, so she can say the sentence MedicareSchool cannot: "I have no reason to steer you." Treat their ad library as free R&D. The two-paths binary, the "nobody told you" gap, the $200K number, and the retargeting sequence are all proven and all worth adapting, run through Emily's independence claim and her real founding story instead of a credential wall.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="competitor-card">
+        <div class="competitor-card-header">
+          <div>
+            <div class="competitor-name">USA Medicare 101</div>
+            <div class="competitor-type">Free online webinar · multiple ad headline variations</div>
+          </div>
+          <span class="tier-badge tier-1">Tier 1 — Direct</span>
+        </div>
+        <div class="competitor-body">
+          <div>
+            <div class="competitor-field-label">Meta Activity</div>
+            <div class="competitor-field-value">10+ simultaneous ads with same creative but different headline variants. Running since ~June 2026. Aggressively testing audiences.</div>
+          </div>
+          <div>
+            <div class="competitor-field-label">Core Hook Angles</div>
+            <div class="competitor-field-value">
+              <span class="tag">"America's #1 workshop"</span>
+              <span class="tag">"Medicare is confusing, are you ready?"</span>
+              <span class="tag">"Maximize your Medicare"</span>
+            </div>
+          </div>
+          <div>
+            <div class="competitor-field-label">Positioning</div>
+            <div class="competitor-field-value">Volume-driven testing approach. No strong personal brand or independence claim visible. Authority positioning via "America's #1" claim.</div>
+          </div>
+          <div>
+            <div class="competitor-field-label">Threat Level</div>
+            <div class="competitor-field-value"><span class="alert-tag">MED-HIGH — heavy impression volume, but weak differentiation vs. Emily</span></div>
+          </div>
+          <div style="grid-column:1/-1;">
+            <div class="competitor-field-label">How Emily Beats Them</div>
+            <div class="competitor-field-value">They win on volume, not on meaning. Ten near-identical ads and an "America's #1" claim signal spend, not trust, and there is no named human or independence story to hold onto. Emily wins on the opposite axis: a real founder, a real reason she does this, and a specific promise (no commissions) that a headline-testing machine cannot manufacture. Do not try to out-spend them. Out-specify them, since a hook naming a real situation beats a generic "are you ready?" now that Special Ads targeting is broad for everyone.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="competitor-card">
+        <div class="competitor-card-header">
+          <div>
+            <div class="competitor-name">The Medicare Family</div>
+            <div class="competitor-type">Free educational video · pattern-interrupt tone</div>
+          </div>
+          <span class="tier-badge tier-1">Tier 1 — Direct</span>
+        </div>
+        <div class="competitor-body">
+          <div>
+            <div class="competitor-field-label">Meta Activity</div>
+            <div class="competitor-field-value">6 ads using same creative. Free video model, not a live workshop. Lighter spend than MedicareSchool.</div>
+          </div>
+          <div>
+            <div class="competitor-field-label">Core Hook Angles</div>
+            <div class="competitor-field-value">
+              <span class="tag">Sarcasm/humor opener</span>
+              <span class="tag">"Since when does the government make anything simple?"</span>
+            </div>
+          </div>
+          <div>
+            <div class="competitor-field-label">Positioning</div>
+            <div class="competitor-field-value">Relatable, slightly irreverent. Parts A/B/C/D explanation focus. Lower production/sophistication than Emily.</div>
+          </div>
+          <div>
+            <div class="competitor-field-label">Threat Level</div>
+            <div class="competitor-field-value"><span class="tag">MED — earns attention with humor; notable tonal differentiation</span></div>
+          </div>
+          <div style="grid-column:1/-1;">
+            <div class="competitor-field-label">How Emily Beats Them</div>
+            <div class="competitor-field-value">Their edge is the pattern-interrupt tone, and it is worth borrowing, not their production. The trap in sarcasm is that it can read as dismissive of a scared prospect. Emily can run the same "of course this is confusing" opener but land it with warmth instead of irony, so the humor converts into trust rather than an eye-roll. She also outclasses them on depth: they stop at explaining Parts A/B/C/D, while Emily can move the same viewer straight into the rules that actually cost money.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="competitor-card">
+        <div class="competitor-card-header">
+          <div>
+            <div class="competitor-name">Gruening Health &amp; Wealth</div>
+            <div class="competitor-type">Live educational workshop · timeline/age-64 focus · webinar.ghwmedicare.com</div>
+          </div>
+          <span class="tier-badge tier-1">Tier 1 — Direct</span>
+        </div>
+        <div class="competitor-body">
+          <div>
+            <div class="competitor-field-label">Meta Activity</div>
+            <div class="competitor-field-value">Multiple video ads (57s–1:47). Running since July 2026. Active spend on "Learn Medicare Basics" CTA.</div>
+          </div>
+          <div>
+            <div class="competitor-field-label">Core Hook Angles</div>
+            <div class="competitor-field-value">
+              <span class="tag">Age-64 timeline window</span>
+              <span class="tag">"Plain English"</span>
+              <span class="tag">"Reserve your spot"</span>
+              <span class="tag">Milestone/deadline urgency</span>
+            </div>
+          </div>
+          <div>
+            <div class="competitor-field-label">Positioning</div>
+            <div class="competitor-field-value">Regional/local flavor. No explicit independence or no-commission claim. Calm, educational tone. Multiple video variations testing the same timeline angle.</div>
+          </div>
+          <div>
+            <div class="competitor-field-label">Threat Level</div>
+            <div class="competitor-field-value"><span class="tag">MED — solid execution of timeline angle; Emily can outflank with specificity</span></div>
+          </div>
+          <div style="grid-column:1/-1;">
+            <div class="competitor-field-label">How Emily Beats Them</div>
+            <div class="competitor-field-value">The age-64 timeline hook is genuinely good and worth adopting, but Gruening runs it with no independence claim and a regional footprint. Emily can take the same calendar-urgency mechanic national and attach it to a decision, not just a date: not "start learning at 64" but "here is the one timing mistake at 64 that follows you for life" (Part B penalty, the HSA six-month rule, the SS-to-Medicare link). Same trigger, sharper payload, plus the no-commission promise they never make.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="competitor-card">
+        <div class="competitor-card-header">
+          <div>
+            <div class="competitor-name">19th Hole Senior Solutions / Josh Docktor Insurance</div>
+            <div class="competitor-type">Local brokers running educational-tone ads</div>
+          </div>
+          <span class="tier-badge tier-1">Tier 1 — Indirect</span>
+        </div>
+        <div class="competitor-body">
+          <div>
+            <div class="competitor-field-label">Meta Activity</div>
+            <div class="competitor-field-value">Small budgets, 1–2 active ads each. "Turning 65 Soon? Learn Medicare First" headline.</div>
+          </div>
+          <div>
+            <div class="competitor-field-label">Core Hook Angles</div>
+            <div class="competitor-field-value"><span class="tag">Turning-65 trigger</span> <span class="tag">Learn-first positioning</span></div>
+          </div>
+          <div>
+            <div class="competitor-field-label">Positioning</div>
+            <div class="competitor-field-value">Education-first as a broker acquisition tactic. Local, small-scale. Not a real national threat — but they occupy the same hook real estate.</div>
+          </div>
+          <div>
+            <div class="competitor-field-label">Threat Level</div>
+            <div class="competitor-field-value"><span class="tag">LOW — limited reach</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="competitor-card">
+        <div class="competitor-card-header">
+          <div>
+            <div class="competitor-name">Medicare Hero (medicarehero.com)</div>
+            <div class="competitor-type">Free webinar funnel → licensed agent → plan comparison</div>
+          </div>
+          <span class="tier-badge tier-1">Tier 1 — Direct</span>
+        </div>
+        <div class="competitor-body">
+          <div>
+            <div class="competitor-field-label">Meta Activity</div>
+            <div class="competitor-field-value">Active funnel confirmed. Running workshop registration ads. Phone number (1-888-321-6361) + online registration dual CTA.</div>
+          </div>
+          <div>
+            <div class="competitor-field-label">Core Hook Angles</div>
+            <div class="competitor-field-value">
+              <span class="tag">"Medicare doesn't have to be confusing"</span>
+              <span class="tag">No insurance sales pitch</span>
+              <span class="tag">Free e-book bonus</span>
+            </div>
+          </div>
+          <div>
+            <div class="competitor-field-label">Positioning</div>
+            <div class="competitor-field-value">Claims "no insurance company sales pitch" but back-end converts to a licensed agent (commissioned). Independence claim is softer than Emily's structural independence. Also offers bonus e-book "Stress Free Guide To Medicare."</div>
+          </div>
+          <div>
+            <div class="competitor-field-label">Threat Level</div>
+            <div class="competitor-field-value"><span class="tag">MED — similar model but Emily's no-commission structure is genuinely different from their back-end</span></div>
+          </div>
+          <div style="grid-column:1/-1;">
+            <div class="competitor-field-label">How Emily Beats Them</div>
+            <div class="competitor-field-value">Medicare Hero advertises "no sales pitch," then hands the prospect to a licensed, commissioned agent, so the promise and the back-end do not match. That gap is Emily's opening. Her independence is structural rather than a reassurance line, and she can make the contrast the ad itself: "some workshops say no pitch, then pass you to someone who earns a commission when you enroll. I don't earn one either way." The free e-book is also easy to answer with a stronger lead magnet built from the named-rules content.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="insight" style="margin-top:28px;">
+      <div class="insight-label">Reading the Landscape</div>
+      <p>Six advertisers, one shape. Pull back from the individual cards and the pattern is clear, and it points straight at where Emily should spend her creative.</p>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:14px; margin-top:4px;">
+      <div class="pattern-card" style="grid-template-columns:1fr;">
+        <div>
+          <div class="pattern-who">Takeaway 01 · The moat</div>
+          <div class="pattern-name">The format is commoditized. The operator is not.</div>
+          <div class="pattern-desc">Every rival sells the same free workshop and the same promise: "Medicare is confusing, we make it simple." Not one of them can add the next sentence: "and I take no commissions and sell no plans." That sentence is the entire moat. It is not a copy flourish, it is the one claim the whole competitive set is structurally barred from making.</div>
+        </div>
+      </div>
+      <div class="pattern-card" style="grid-template-columns:1fr;">
+        <div>
+          <div class="pattern-who">Takeaway 02 · The pace-setter</div>
+          <div class="pattern-name">MedicareSchool is the benchmark, not the ceiling.</div>
+          <div class="pattern-desc">Their ad library is the best free R&D Emily has. The two-paths binary, the "nobody told you" curiosity gap, the $200K number, and a live retargeting sequence are all validated by their spend. Adopt the mechanics and strip the liability: their funnel still ends in commissioned plan sales, so every frame Emily borrows gets upgraded by the independence claim they cannot copy back.</div>
+        </div>
+      </div>
+      <div class="pattern-card" style="grid-template-columns:1fr;">
+        <div>
+          <div class="pattern-who">Takeaway 03 · The open field</div>
+          <div class="pattern-name">Everyone competes on confusion. Nobody competes on the named rules.</div>
+          <div class="pattern-desc">The rivals stay generic: "plans," "deadlines," "confusing," "plain English." The specific, verifiable rules that actually cost people money are almost entirely unclaimed in the ad space: the HSA six-month excise trap, the IRMAA two-year lookback, the narrow-network doctor loss, the Social Security to Medicare timing link, the Part B late penalty. Specificity is not just better copy here. With Special Ads Category forcing everyone to run broad, a hook that names a real situation is now doing the audience qualification that targeting no longer can.</div>
+        </div>
+      </div>
+      <div class="pattern-card" style="grid-template-columns:1fr;">
+        <div>
+          <div class="pattern-who">Takeaway 04 · The calendar</div>
+          <div class="pattern-name">Independence reads loudest when the prospect is most besieged.</div>
+          <div class="pattern-desc">From October 15 to December 7, carrier and broker spend floods the feed with "$0 premium" and urgency mail. That noise is not a threat to Emily's message, it is the setup for it. The more the prospect feels pressured and sold to, the harder her "everyone here has a stake in your decision except me" lands. Weight the plan-leaving, network, and junk-mail angles into that window on purpose.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: CREATIVE PATTERNS -->
+  <section class="section">
+    <div class="section-label">Section 02</div>
+    <h2 class="section-title">Creative Patterns Currently Working</h2>
+
+    <div class="insight">
+      <div class="insight-label">Pattern Context</div>
+      <p>These patterns are confirmed-active in the Ad Library as of August 2026. "Working" here means <em>advertiser is investing in them repeatedly or with many ad variations</em> — a reliable proxy for performance. All video-dominant. Average length: 1:00–2:00.</p>
+    </div>
+
+    <div class="patterns-grid">
+
+      <div class="pattern-card">
+        <div>
+          <div class="pattern-who">MedicareSchool.com · 4 ads using this frame</div>
+          <div class="pattern-name">The "Two Paths" Binary Simplification</div>
+          <div class="pattern-desc">Takes an overwhelming system (dozens of plan types) and reduces it to a clean binary: Original Medicare vs. Medicare Advantage. The binary kills ambiguity, gives structure, and makes the choice feel manageable. Runs across at least 4 separate MedicareSchool ads — consistently.</div>
+        </div>
+        <div>
+          <div class="pattern-example"><em>"There are two main Medicare paths, and how they work can shape your experience in ways most people don't expect."</em></div>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div>
+          <div class="pattern-who">MedicareSchool.com · persistent CTA phrase</div>
+          <div class="pattern-name">"Learn Before You Enroll" Education-First CTA</div>
+          <div class="pattern-desc">Used as the closing CTA line in every MedicareSchool ad. Frames registration as the smart, proactive move — not a sales funnel entry. Counters the "is this a pitch?" objection without naming it.</div>
+        </div>
+        <div>
+          <div class="pattern-example"><em>"The best thing you can do right now is learn before you enroll. Our free Medicare Essentials Workshop covers everything — every plan type, every deadline, every trap."</em></div>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div>
+          <div class="pattern-who">MedicareSchool.com · ad running since Jul 2026</div>
+          <div class="pattern-name">The "Nobody Told You" Curiosity Gap</div>
+          <div class="pattern-desc">Headline positions the workshop as revealing suppressed information. Validates the prospect's sense that they're missing something while indicting the existing channels (agents, government) for the omission. Creates a "why haven't I heard this?" pull.</div>
+        </div>
+        <div>
+          <div class="pattern-example"><em>"What Nobody Tells You When You Turn 65."</em></div>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div>
+          <div class="pattern-who">MedicareSchool.com · fear-anchoring angle</div>
+          <div class="pattern-name">Hospital Bill Shock ($200K Number)</div>
+          <div class="pattern-desc">Leads with a specific large dollar amount tied to what Medicare coverage (or the wrong plan) actually costs in a worst-case scenario. Specificity of the number is the mechanism — it's not vague "big bills" but $200,000, which the reader's brain treats as real.</div>
+        </div>
+        <div>
+          <div class="pattern-example"><em>"What a $200,000 Hospital Bill Actually Costs on Medicare."</em></div>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div>
+          <div class="pattern-who">MedicareSchool.com · contrast frame</div>
+          <div class="pattern-name">The "Two Versions of 65" Contrast</div>
+          <div class="pattern-desc">Opens with a vivid before/after split: the version of turning 65 where Medicare is overwhelming, versus the version where you actually understand it. Puts the prospect in both pictures simultaneously — the negative for empathy, the positive for aspiration.</div>
+        </div>
+        <div>
+          <div class="pattern-example"><em>"There is a version of turning 65 where Medicare feels overwhelming... And there is a version where you actually understand what you're choosing between."</em></div>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div>
+          <div class="pattern-who">The Medicare Family · 6 ads</div>
+          <div class="pattern-name">The Sarcasm / Pattern-Interrupt Opener</div>
+          <div class="pattern-desc">Opens with a knowing, slightly irreverent line that says "I get it" before anyone says anything. Breaks the scroll pattern used by every serious, earnest Medicare ad. Creates instant affinity with people who are already frustrated with the category.</div>
+        </div>
+        <div>
+          <div class="pattern-example"><em>"Of course Medicare is confusing! Since when does the government make anything simple?"</em></div>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div>
+          <div class="pattern-who">Gruening Health &amp; Wealth · 3 variations</div>
+          <div class="pattern-name">Age-64 Timeline Alert</div>
+          <div class="pattern-desc">Targets the specific 12-month window before eligibility. Creates urgency around a real calendar window — not vague "turning 65 soon" but "starting at 64." This specificity reads as expert and increases relevance with the ideal prospect timing.</div>
+        </div>
+        <div>
+          <div class="pattern-example"><em>"Gathering general Medicare information starting at age 64 allows you to break down the entire process step-by-step."</em></div>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div>
+          <div class="pattern-who">MedicareSchool.com · retargeting</div>
+          <div class="pattern-name">Retargeting "Book the Call" Sequence</div>
+          <div class="pattern-desc">Separate ad creative targeting people who visited the site but didn't convert. Warm, direct, zero-pressure. Signals a mature funnel with retargeting infrastructure — not just TOF spend. Creates 2–3 more touchpoints before the conversion ask.</div>
+        </div>
+        <div>
+          <div class="pattern-example"><em>"We noticed you checked out our website MedicareSchool.com... but you didn't get a chance to book a call. We offer a completely free, zero-obligation phone consultation."</em></div>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div>
+          <div class="pattern-who">USA Medicare 101 · 10+ simultaneous ads</div>
+          <div class="pattern-name">Heavy Headline Variation Testing</div>
+          <div class="pattern-desc">Running 10+ ads simultaneously with the same creative but 5 different headline variants in each ad unit. This is a scaled audience/placement testing approach — finding what hook resonates before committing budget. Signals sophistication in funnel architecture.</div>
+        </div>
+        <div>
+          <div class="pattern-example">Variants within one ad unit: <em>"America's #1 Workshop"</em> / <em>"Medicare is confusing. Are you ready?"</em> / <em>"Medicare made simple! Join today"</em></div>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div>
+          <div class="pattern-who">MedicareSchool.com · transition-specific</div>
+          <div class="pattern-name">The Employer-to-Medicare Transition Frame</div>
+          <div class="pattern-desc">Targets the specific moment of leaving employer coverage — not generic "turning 65" but "you've worked past 65 and are now getting ready to retire." Hyper-specific situation makes the ad feel like it was written for them.</div>
+        </div>
+        <div>
+          <div class="pattern-example"><em>"If you've worked past 65 and are now getting ready to retire, Medicare isn't just something you 'start.' You're transitioning from coverage that's likely felt simple and familiar into a system that works very differently."</em></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 3: COMPETITIVE GAPS -->
+  <section class="section">
+    <div class="section-label">Section 03</div>
+    <h2 class="section-title">What Emily Owns That Competitors Don't</h2>
+
+    <p style="margin-bottom:20px; color:var(--muted); font-size:14px;">Angles present in Emily's brand files and confirmed absent from competitor creative in the current Ad Library scan. These are differentiators — protect them and lean into them.</p>
+
+    <div class="gap-table-wrap">
+      <table class="gap-table">
+        <thead>
+          <tr>
+            <th>Angle / Asset</th>
+            <th>Emily</th>
+            <th>MedicareSchool</th>
+            <th>USA Mcare 101</th>
+            <th>Others</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>DOJ kickback scandal (named carriers, named brokers)</strong></td>
+            <td class="check">Has it</td>
+            <td class="cross">Not using</td>
+            <td class="cross">Not using</td>
+            <td class="cross">No one</td>
+            <td>Filed May 2025. Aetna, Humana, Elevance, eHealth, GoHealth, SelectQuote named. Devastating ammunition for independence framing. Confirm current status with Emily before using carrier/broker names.</td>
+          </tr>
+          <tr>
+            <td><strong>HSA 6% excise-tax trap (stop contributions before Medicare)</strong></td>
+            <td class="check">Has it</td>
+            <td class="cross">Not using</td>
+            <td class="cross">Not using</td>
+            <td class="cross">No one</td>
+            <td>The 6-month rule is specific, verifiable, and brutal. "Your agent never mentioned that because it doesn't help them sell you a plan." High-specificity hook.</td>
+          </tr>
+          <tr>
+            <td><strong>IRMAA two-year income lookback</strong></td>
+            <td class="check">Has it</td>
+            <td class="cross">Not using</td>
+            <td class="cross">Not using</td>
+            <td class="cross">No one</td>
+            <td>Hidden surcharge based on income from 2 years ago. Catches retirees who earned well in the year before retirement. No competitor is running this angle.</td>
+          </tr>
+          <tr>
+            <td><strong>Social Security + Medicare timing connection</strong></td>
+            <td class="check">Running</td>
+            <td class="cross">Not using</td>
+            <td class="cross">Not using</td>
+            <td class="cross">No one</td>
+            <td>Emily has an active ad on this. No competitor is touching it. Own it harder.</td>
+          </tr>
+          <tr>
+            <td><strong>$500K saver / high-earner Medicare protection</strong></td>
+            <td class="check">Running</td>
+            <td class="cross">Not using</td>
+            <td class="cross">Not using</td>
+            <td class="cross">No one</td>
+            <td>Emily's "my dad had $500K" ads are running. This audience has zero coverage from competitors — no one else is targeting savers specifically.</td>
+          </tr>
+          <tr>
+            <td><strong>2026 carrier county exits (Humana 198, Aetna 100, UHC 109)</strong></td>
+            <td class="cross">Not using</td>
+            <td class="cross">Not using</td>
+            <td class="cross">Not using</td>
+            <td class="cross">No one</td>
+            <td>Highly timely. Stranded enrollees who got a discontinuation letter are a red-hot audience right now. Emily has the expertise to help them and no one is running this angle.</td>
+          </tr>
+          <tr>
+            <td><strong>Daughter/family founding story</strong></td>
+            <td class="check">Has it</td>
+            <td class="cross">Not using</td>
+            <td class="cross">Not using</td>
+            <td class="cross">No one</td>
+            <td>Marvin Musick uses his name but not a personal story. Emily's "I helped my dad" narrative is far more emotionally resonant. Competitors rely on credentials; Emily has a human story.</td>
+          </tr>
+          <tr>
+            <td><strong>Caregiver / adult-child audience targeting</strong></td>
+            <td class="cross">Underused</td>
+            <td class="cross">Not visible</td>
+            <td class="cross">Not visible</td>
+            <td class="cross">Not visible</td>
+            <td>The Linda persona (adult child helping a parent from two states away) has zero coverage in the competitive landscape. An underserved entry point into the same workshop.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SECTION 4: CREATIVE RECOMMENDATIONS -->
+  <section class="section">
+    <div class="section-label">Section 04</div>
+    <h2 class="section-title">Creative Recommendations</h2>
+
+    <div class="insight">
+      <div class="insight-label">How to Read These</div>
+      <p>Each recommendation names the competitive pattern it steals from or the gap it fills, the hook (verbatim draft for the opening line or headline), the persona target, and the format. All drive to the free workshop. None sell the Concierge to cold traffic. Priority is rated on competitive gap size and likely response given the current landscape.</p>
+    </div>
+
+    <div class="insight" style="margin-bottom:16px;">
+      <div class="insight-label">Format Guidelines (Meta 2026)</div>
+      <p><strong>Video:</strong> Native/UGC-style talking head outperforms polished production by 35% in view completion (IAB 2025). Emily to camera is both highest-performing and most brand-congruent. Hook within 3 seconds. 80% of video watched without sound — captions are mandatory. Design sound-off-first. Target length: 45–90 sec for education hooks; 15–30 sec for retargeting. <strong>CPL benchmarks:</strong> Medicare workshop registrations averaged $18.14 in 2025 (up from $7.65 in 2024 due to creative fatigue). Refresh trigger: frequency above 3.5 within 7 days + 25% engagement drop.</p>
+    </div>
+
+    <div class="flag">
+      <div class="flag-label">Brand Voice Constraint</div>
+      <p>No "limited spots," no countdown pressure, no "$0 guaranteed" benefit language, no medical iconography. Protective urgency only: "don't finalize your Medicare decision until you've joined." Confirm DOJ-specific claims (carrier/broker names) with Emily before running.</p>
+    </div>
+
+    <div class="insight" style="margin-bottom:24px;">
+      <div class="insight-label">Suggested Testing Sequence</div>
+      <p>Fifteen concepts is a slate, not a single batch. Run them in three waves so the calendar and the funnel stage do the sequencing:</p>
+      <p style="margin-top:8px;"><strong>Wave 1 — AEP-timely, cold (launch by mid-September):</strong> 01 Plan Left Town, 10 The Doctor You've Had 15 Years, 04 The $0 Premium Trap. These ride the enrollment window and the carrier noise while intent is highest.</p>
+      <p><strong>Wave 2 — expertise and differentiation, cold:</strong> 02 HSA Tax Bomb, 08 IRMAA Sucker Punch, 15 Social Security + Medicare Timing, 13 The $500K Mistake, 14 The One Question. Each names a rule or a stance no rival is running, so they qualify the audience by hook alone.</p>
+      <p><strong>Wave 3 — new doors and warm funnel:</strong> 06 The Caregiver Entry Point, 11 That "URGENT" Envelope, 12 Three Hours on Medicare.gov, 03 Two Versions of 65, 07 Sarcasm Opener, then 09 Retargeting to harvest everyone the first two waves warmed. Hold 05 The DOJ Angle until Emily and legal clear the specific claims.</p>
+      <p style="margin-top:8px;">Test 3 to 4 concepts per ad set, one variable at a time. Kill on frequency above 3.5 with a 25% engagement drop; scale any hook that beats the $18.14 CPL benchmark.</p>
+    </div>
+
+    <div class="rec-grid">
+
+      <div class="rec-card">
+        <div class="rec-header">
+          <span class="rec-num">01</span>
+          <span class="rec-title">The Plan That Just Left Town</span>
+          <span class="priority-chip p-high">Priority: High</span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-field rec-full-width">
+            <div class="rec-field-label">Opening Hook (video or headline)</div>
+            <div class="hook-text">"If you got a letter this fall saying your Medicare Advantage plan is leaving your county — you have about 60 days, and a lot of agents are about to call you. Before you let anyone rush you into the next plan, join my free workshop."</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Competitive Gap Filled</div>
+            <div class="rec-field-value">Zero competitors are running this. Humana exited 198 counties, Aetna 100, UHC 109 for 2026. These are warm, high-intent prospects who already know they have a problem.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Persona</div>
+            <div class="rec-field-value">AEP plan-switcher (65+ folder). People who got a discontinuation letter. High urgency, pre-motivated to act.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Format</div>
+            <div class="rec-field-value">Emily to camera, 60–90 sec. No graphics needed. The authority is her directness.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Why It Works</div>
+            <div class="rec-field-value">Hyper-topical, zero competition, speaks to an audience in the exact emotional state (betrayed by a carrier, confused, being pressured) that makes Emily's independence story land hardest.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-header">
+          <span class="rec-num">02</span>
+          <span class="rec-title">The HSA Tax Bomb</span>
+          <span class="priority-chip p-high">Priority: High</span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-field rec-full-width">
+            <div class="rec-field-label">Opening Hook (video or headline)</div>
+            <div class="hook-text">"If you have an HSA and you're turning 65, there's a Medicare rule that will cost you 6% a year in IRS penalties if nobody tells you about it. Your insurance agent never mentioned it — because it has nothing to do with selling you a plan. I'm going to mention it."</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Competitive Gap Filled</div>
+            <div class="rec-field-value">No competitor is running this. The HSA 6-month rule (stop contributions 6 months before Medicare enrollment to avoid IRS excise tax) is specific, verifiable, and devastating if missed. Agents don't teach it. Emily does.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Persona</div>
+            <div class="rec-field-value">David (the retiring planner). Has an HSA. Detail-driven. Will respond to the specificity of "6%" and "6 months."</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Format</div>
+            <div class="rec-field-value">Emily to camera, 45–75 sec. State the rule up front. Don't bury the lede.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Why It Works</div>
+            <div class="rec-field-value">Steals MedicareSchool's "nobody told you" angle but with a real, named rule, a specific dollar consequence, and a clear indictment of the commissioned-agent model. Specificity beats cleverness.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-header">
+          <span class="rec-num">03</span>
+          <span class="rec-title">Two Versions of 65 — Emily's Way</span>
+          <span class="priority-chip p-high">Priority: High</span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-field rec-full-width">
+            <div class="rec-field-label">Opening Hook (video or headline)</div>
+            <div class="hook-text">"There are two ways to turn 65. In one of them, you figure Medicare out the same way everyone else does — you talk to someone who sells Medicare plans for a living, you pick something, and you hope it was right. In the other one, you talk to someone who doesn't sell plans, doesn't earn commissions, and only gets paid when you make the right decision for you. I'm hosting a free workshop this week. Come see the difference."</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Competitive Gap Filled</div>
+            <div class="rec-field-value">MedicareSchool runs the "two versions" contrast frame successfully — but without the independence angle. Emily's version adds the structural differentiator (no commissions) that MedicareSchool can't claim because they sell plans.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Persona</div>
+            <div class="rec-field-value">Susan (first-timer) and Carol (skeptic). Broad. Works for most cold traffic.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Format</div>
+            <div class="rec-field-value">Emily to camera or static image with two-panel visual showing the contrast. 30–60 sec for video.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Why It Works</div>
+            <div class="rec-field-value">Steals a proven competitor creative framework and upgrades it with the one claim MedicareSchool can't make. Emily's independence is the entire differentiator here.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-header">
+          <span class="rec-num">04</span>
+          <span class="rec-title">The $200K "$0 Premium" Trap</span>
+          <span class="priority-chip p-high">Priority: High</span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-field rec-full-width">
+            <div class="rec-field-label">Opening Hook (video or headline)</div>
+            <div class="hook-text">"That $0 premium Medicare plan they keep advertising? Here's what it actually costs you in the hospital."</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Competitive Gap Filled</div>
+            <div class="rec-field-value">MedicareSchool runs the "$200K hospital bill" angle. Emily can run the "$0 premium" reframe — same fear but anchored to the specific carrier advertising claim the prospect has already seen. More credible as a counterpoint.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Persona</div>
+            <div class="rec-field-value">Carol (skeptic). Has seen the "$0 premium" ads and felt something was off. Needs someone to name the catch.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Format</div>
+            <div class="rec-field-value">Short video or static image. Text overlay: "$0 Premium → What it actually costs" with a hospital bill visual. Emily explains in the video.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Why It Works</div>
+            <div class="rec-field-value">References a specific thing the prospect has already seen (carrier "$0 premium" ads), validates their skepticism, and positions Emily as the person who explains what the ads don't say.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-header">
+          <span class="rec-num">05</span>
+          <span class="rec-title">The DOJ Angle (No Names Required)</span>
+          <span class="priority-chip p-med">Priority: Medium</span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-field rec-full-width">
+            <div class="rec-field-label">Opening Hook (video or headline)</div>
+            <div class="hook-text">"In 2025, the Department of Justice filed a lawsuit alleging that insurance companies paid Medicare brokers hundreds of millions of dollars in illegal kickbacks to steer seniors toward their plans — regardless of whether that plan was right for the person. I don't take money from any insurance company. Not a dime. That's why I'm offering a free workshop."</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Competitive Gap Filled</div>
+            <div class="rec-field-value">Zero competitors are running this. The DOJ matter is public record. Confirms what the skeptical prospect already suspects: that the commissioned model is structurally broken, not just occasionally bad.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Persona</div>
+            <div class="rec-field-value">Carol (skeptic). Confirm with Emily/legal before running. Do not name specific companies in ad copy without client sign-off.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Format</div>
+            <div class="rec-field-value">Emily to camera, direct. 30–45 sec. Matter-of-fact, not dramatic. The facts are dramatic enough.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Why It Works</div>
+            <div class="rec-field-value">Turns the DOJ filing into validated proof that the problem Emily solves is systemic. Transforms skepticism into fuel for enrollment.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-header">
+          <span class="rec-num">06</span>
+          <span class="rec-title">The Caregiver Entry Point</span>
+          <span class="priority-chip p-med">Priority: Medium</span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-field rec-full-width">
+            <div class="rec-field-label">Opening Hook (video or headline)</div>
+            <div class="hook-text">"My mom keeps getting all this Medicare mail and she doesn't know what's real. If you're helping a parent through Medicare right now — you can both come to my free workshop, ask your questions, and leave knowing the right answer. No one is trying to sell her a plan."</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Competitive Gap Filled</div>
+            <div class="rec-field-value">No competitor is explicitly targeting adult children / caregivers. This persona (Linda, 52, helping her mom) has the same reach as the T65 persona but zero competition in the ad space.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Persona</div>
+            <div class="rec-field-value">Linda (adult-child caregiver). Protective of her parent. Allergic to anyone who might take advantage of her mom. Emily's independence story is uniquely compelling to this persona.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Format</div>
+            <div class="rec-field-value">Emily to camera or image with a warm, protective visual (no medical imagery). Audience targeting: ages 45–58, interests in "caring for elderly parents," "retirement planning."</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Why It Works</div>
+            <div class="rec-field-value">Opens a new audience segment with zero competitive saturation. The same workshop, a different front door — and a front door competitors haven't found yet.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-header">
+          <span class="rec-num">07</span>
+          <span class="rec-title">The "Good Job on the HSS, Bad News on the 6 Months" Sarcasm Opener</span>
+          <span class="priority-chip p-med">Priority: Medium</span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-field rec-full-width">
+            <div class="rec-field-label">Opening Hook (video or headline)</div>
+            <div class="hook-text">"You saved your whole life, picked a retirement date, and figured Medicare would just... sort itself out. I understand completely. Nobody told you there was homework. Join my free workshop — one hour, plain English, no sales pitch."</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Competitive Gap Filled</div>
+            <div class="rec-field-value">Borrows The Medicare Family's sarcasm/pattern-interrupt tactic but delivers it in Emily's warm, empathetic voice instead of dismissive irony. Works for the procrastinator (Frank) and the overwhelmed first-timer (Susan).</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Persona</div>
+            <div class="rec-field-value">Frank (procrastinator) and Susan (first-timer). Broad TOF reach.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Format</div>
+            <div class="rec-field-value">Emily to camera with a slight smile. 20–30 sec hook, then pivot to the workshop offer.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Why It Works</div>
+            <div class="rec-field-value">Breaks the earnest/serious tone of every other Medicare ad without being dismissive. Emily's warmth converts the humor into trust rather than eye-rolls.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-header">
+          <span class="rec-num">08</span>
+          <span class="rec-title">IRMAA Sucker Punch</span>
+          <span class="priority-chip p-med">Priority: Medium</span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-field rec-full-width">
+            <div class="rec-field-label">Opening Hook (video or headline)</div>
+            <div class="hook-text">"Medicare looks at what you earned two years ago to decide how much you pay today. If you had a good year right before retirement — congratulations. Medicare charges extra for that. Nobody is going to volunteer this information."</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Competitive Gap Filled</div>
+            <div class="rec-field-value">IRMAA (the income-related adjustment to Part B/D premiums) is one of the most reliably surprising Medicare facts for high earners. Zero competitors are naming it. Emily's brand has it in the competitor files.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Persona</div>
+            <div class="rec-field-value">David (retiring planner) and the $500K saver segment. Income-aware, plan-ahead types who will be blindsided by a surcharge no one warned them about.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Format</div>
+            <div class="rec-field-value">Emily to camera or static image. Short — 30–45 sec is enough. The fact does the work.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Why It Works</div>
+            <div class="rec-field-value">High relevance to a high-value segment. Specificity signals genuine expertise. Directly indicts the silence of the agent model on rule they never mention.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-header">
+          <span class="rec-num">09</span>
+          <span class="rec-title">Retargeting: "You Were There, Now Take the Next Step"</span>
+          <span class="priority-chip p-test">Test: Warm Funnel</span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-field rec-full-width">
+            <div class="rec-field-label">Opening Hook (video or headline)</div>
+            <div class="hook-text">"You've seen the workshop. You know what we do, and you know we don't sell plans. The next step is a 30-minute conversation about your specific situation — your doctors, your medications, your timeline. It costs nothing and there's no pitch at the end."</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Competitive Gap Filled</div>
+            <div class="rec-field-value">MedicareSchool is already running this type of retargeting sequence. Emily isn't. This is a confirmed pattern the #1 direct competitor relies on — it should be in Emily's funnel too.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Persona</div>
+            <div class="rec-field-value">Workshop attendees and site visitors who didn't book a Personalized Medicare Interview.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Format</div>
+            <div class="rec-field-value">Warm video or static image. Short (15–30 sec). Audience: website custom audience, workshop page visitors. CTA to Personalized Interview, not back to the workshop.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Why It Works</div>
+            <div class="rec-field-value">Converts warm traffic that's already done the hard work of attending. This audience has the highest intent in the funnel. MedicareSchool is harvesting this segment — Emily should be too.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-header">
+          <span class="rec-num">10</span>
+          <span class="rec-title">The Doctor You've Had for 15 Years</span>
+          <span class="priority-chip p-high">Priority: High</span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-field rec-full-width">
+            <div class="rec-field-label">Opening Hook (video or headline)</div>
+            <div class="hook-text">"The cheapest Medicare plan can quietly cost you the doctor you've had for fifteen years. Before you pick a plan on price, come find out how to check whether your doctors and your prescriptions actually stay covered, first."</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Competitive Gap Filled</div>
+            <div class="rec-field-value">No competitor leads with the narrow-network trap. Carriers actively hide it behind "$0 premium." The keep-your-doctor fear is the single most common post-enrollment regret, and it is wide open in the ad space.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Persona</div>
+            <div class="rec-field-value">Susan (first-timer) and Carol (skeptic), plus anyone with an established doctor or an ongoing prescription. Broad, emotionally loaded.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Format</div>
+            <div class="rec-field-value">Emily to camera, 45–75 sec, or a static "your doctor / your plan" two-panel. Names the method: start from your doctors, then check the plan.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Why It Works</div>
+            <div class="rec-field-value">Turns an abstract "pick a plan" decision into a personal one about a named relationship. Positions Emily's doctors-first process as the opposite of price-first selling.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-header">
+          <span class="rec-num">11</span>
+          <span class="rec-title">That "URGENT" Envelope</span>
+          <span class="priority-chip p-med">Priority: Medium</span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-field rec-full-width">
+            <div class="rec-field-label">Opening Hook (video or headline)</div>
+            <div class="hook-text">"That red 'URGENT' envelope in your mailbox that looks like it came from Medicare? It didn't. Here's how to tell what's actually official and what's just someone trying to sell you a plan."</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Competitive Gap Filled</div>
+            <div class="rec-field-value">Nobody is teaching mail literacy. It disarms the exact direct-mail clutter that carriers and brokers rely on, and it puts Emily visibly on the prospect's side of the table against the noise.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Persona</div>
+            <div class="rec-field-value">Carol (skeptic) and Linda (caregiver sorting a parent's mail from two states away). Protective, distrustful of pressure tactics.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Format</div>
+            <div class="rec-field-value">Static image of the envelope with a "real vs. junk" overlay, or Emily to camera 30–45 sec holding one up. Highly visual, thumb-stopping.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Why It Works</div>
+            <div class="rec-field-value">Concrete and instantly recognizable. Builds trust by giving something useful before asking for anything, and reframes the whole category's pressure mail as the problem Emily solves.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-header">
+          <span class="rec-num">12</span>
+          <span class="rec-title">Three Hours on Medicare.gov</span>
+          <span class="priority-chip p-med">Priority: Medium</span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-field rec-full-width">
+            <div class="rec-field-label">Opening Hook (video or headline)</div>
+            <div class="hook-text">"You can spend three hours on the government website and still not have a straight answer to one simple question: do I even need Part B? One hour with me, in plain English, and you will."</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Competitive Gap Filled</div>
+            <div class="rec-field-value">Rivals claim "plain English" generically. Emily anchors it to the specific, near-universal frustration of the medicare.gov maze: comprehensive and unhelpful at the same time.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Persona</div>
+            <div class="rec-field-value">Susan (first-timer) and Frank (procrastinator) who already tried to figure it out alone and gave up.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Format</div>
+            <div class="rec-field-value">Emily to camera, 30–60 sec. Optional B-roll of the handbook and the website. The contrast does the work.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Why It Works</div>
+            <div class="rec-field-value">Validates a real, shared experience, then offers the specific relief (a straight answer to a named question) that the official channel never delivers.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-header">
+          <span class="rec-num">13</span>
+          <span class="rec-title">The $500K Mistake</span>
+          <span class="priority-chip p-high">Priority: High</span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-field rec-full-width">
+            <div class="rec-field-label">Opening Hook (video or headline)</div>
+            <div class="hook-text">"You did everything right. You saved. And the Medicare decision you make in the next few weeks can quietly undo years of that if nobody walks you through it. This free workshop is for people who have something to protect."</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Competitive Gap Filled</div>
+            <div class="rec-field-value">Zero competitors target savers or higher-net-worth retirees. Everyone chases the mass turning-65 audience. Emily is already running a "my dad had $500K" angle, and it has no competition.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Persona</div>
+            <div class="rec-field-value">David (the retiring planner) and the $500K saver segment. Income-aware, plan-ahead, allergic to sloppy advice.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Format</div>
+            <div class="rec-field-value">Emily to camera, 45–75 sec, calm and serious. No hype. The stakes carry the ad. Pairs naturally with the IRMAA and HSA rules.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Why It Works</div>
+            <div class="rec-field-value">Speaks to a high-value, underserved audience in language the mass-market ads never use. "Something to protect" self-selects the exact prospect worth the most to the practice.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-header">
+          <span class="rec-num">14</span>
+          <span class="rec-title">The One Question to Ask Before Anyone Sells You Anything</span>
+          <span class="priority-chip p-high">Priority: High</span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-field rec-full-width">
+            <div class="rec-field-label">Opening Hook (video or headline)</div>
+            <div class="hook-text">"Before you take Medicare advice from anyone, ask them one question: how do you get paid? Everyone in this conversation has a financial stake in your decision, except me. That's the whole reason I run this free workshop."</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Competitive Gap Filled</div>
+            <div class="rec-field-value">The structural-independence frame is Emily's alone. No competitor in the set, direct or otherwise, can answer "how do you get paid?" with "I take no commissions." It is the anti-category position in one line.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Persona</div>
+            <div class="rec-field-value">Carol (skeptic) first, but broad cold. Works on anyone who has already felt "sold to" in the category.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Format</div>
+            <div class="rec-field-value">Emily to camera, 30–45 sec, direct address. No graphics. The line is the creative.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Why It Works</div>
+            <div class="rec-field-value">Hands the prospect a tool they will use in every other sales conversation, and Emily is the only person who passes her own test. Converts skepticism about the category into trust in her.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-header">
+          <span class="rec-num">15</span>
+          <span class="rec-title">When to Take Social Security, and When to Take Medicare</span>
+          <span class="priority-chip p-med">Priority: Medium</span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-field rec-full-width">
+            <div class="rec-field-label">Opening Hook (video or headline)</div>
+            <div class="hook-text">"Most people think Social Security and Medicare are the same decision. They're not, and getting the timing wrong on one can cost you on the other for the rest of your life. I'll show you how they actually connect."</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Competitive Gap Filled</div>
+            <div class="rec-field-value">No competitor is touching the Social Security to Medicare timing link. Emily already has an active ad on this and owns the angle outright, so lean in harder rather than letting it sit as one creative.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Persona</div>
+            <div class="rec-field-value">David (the retiring planner) and Frank (procrastinator) weighing when to file. Timing-anxious, detail-driven.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Format</div>
+            <div class="rec-field-value">Emily to camera, 45–75 sec, or a simple two-timeline visual showing the two decisions side by side.</div>
+          </div>
+          <div class="rec-field">
+            <div class="rec-field-label">Why It Works</div>
+            <div class="rec-field-value">Signals real expertise on a connection most prospects have never had explained, and an angle the entire competitive set is ignoring. High perceived authority for a low-competition hook.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <hr class="section-hr">
+  <div style="display:flex; gap:32px; flex-wrap:wrap; padding:24px 0; font-size:13px; color:var(--muted);">
+    <div><strong style="color:var(--text);">Data sources:</strong> Meta Ad Library (live, Aug 26 2026), Emily brand files (brand-guide, competitors, buyer-personas, offer-deep-dive)</div>
+    <div><strong style="color:var(--text);">Next step:</strong> Run the slate in the three waves under Section 04's Suggested Testing Sequence. Start Wave 1 (01 Plan Left Town, 10 Doctor You've Had 15 Years, 04 $0 Premium Trap) by mid-September to catch AEP, then layer in the expertise and new-door waves. Clear 05 (DOJ) with Emily and legal before it runs.</div>
+  </div>
+
+</div>
+</body>
+</html>
